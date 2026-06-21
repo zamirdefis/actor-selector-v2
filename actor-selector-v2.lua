@@ -1,3 +1,9 @@
+-- Если что-то перестало работать, смотрите апдейты кода здесь:
+--  https://github.com/zamirdefis/actor-selector-v2 (тут новые версии выходят)
+-- Обнаружили баг? Пишите в лс:
+--  tg: @loksifity
+--  ds: pohnui
+
 ---@diagnostic disable-next-line: undefined-global
 local aegisub = aegisub -- for lsp :P
 
@@ -17,7 +23,7 @@ local config = {
 
   selector_max_x = 3, -- максимальное количество колонок на странице
   selector_max_y = 20, -- максимальное количество строк в колонке
-  default_option = 2, -- режим выбора (от 1 до 4)
+  default_option = 4, -- режим выбора (от 1 до 4)
 
   ui = {
     button = {
@@ -142,7 +148,7 @@ local function view_selector_ui(els, default_value, x_max, y_max, page, select_m
     class = "dropdown",
     name = "select_mode",
     items = config.ui.dropdown.sel_options,
-    value = select_mode or config.ui.dropdown.sel_options[2],
+    value = select_mode or config.ui.dropdown.sel_options[config.default_option],
     x = (x_max * 2) - 1, y = y_max + 1, width = 1, height = 1
   })
 
